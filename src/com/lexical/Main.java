@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String filepath = "C:\\Users\\zk\\workspace\\test.txt";
+		String filepath = "E:\\eclipse-workspace\\compilerexperiment\\test2.txt";
 		
 		String outputFileName = "lexical_result.txt";
 		

@@ -9,11 +9,11 @@ public class Analysis {
 	/**
 	 * 记录当前进行到了第几行
 	 */
-	public int rowNum = 0;
+	public int rowNum = 1;
 	/**
 	 * 记录当前进行到了第几列
 	 */
-	public int colNum = 0;
+	public int colNum = 1;
 	/**
 	 * 规则实体成员
 	 */
@@ -58,15 +58,15 @@ public class Analysis {
 		
 		int intToken = fileInputStream.read();
 		
-		System.out.println((char)intToken);
+		//System.out.println((char)intToken);
 		
 		while(intToken != -1){
 			
-			AnalysisStep((char)intToken);
+			if(AnalysisStep((char)intToken)){
+				intToken = fileInputStream.read();
+			}
 			
-			intToken = fileInputStream.read();
-			
-			System.out.println((char)intToken);
+			//System.out.println((char)intToken);
 			
 		}
 		
@@ -81,14 +81,65 @@ public class Analysis {
 	 * 分析token
 	 * @param token
 	 */
-	public void AnalysisStep(char token){
+	public boolean AnalysisStep(char token){
 		if(rule.isEnter(token)){
 			rowNum++;
 		}
 		if(!rule.isSpaceOrTable(token)){
 			colNum++;
 		}
-		rule.processState(rule.getCurrentState(), token);
+		/**
+		 * 状态转化返回码
+		 */
+		int code = rule.processState(rule.getCurrentState(), token);
+		
+		if(rule.getCurrentState() == 8){
+			this.executeCode(code);
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
+	/**
+	 * 根据规则的状态转化返回的结果码
+	 * 输出相应内容
+	 * @param code
+	 */
+	public void executeCode(int code){
+		if(code == 801){
+			System.out.println("第"+ rowNum +"行 " + "identifier: " + rule.getIdentifier());
+		}
+		if(code == 807){
+			System.out.println("第"+ rowNum +"行 " + "decimal: " + rule.getDecimal());
+		}
+		if(code == 809){
+			System.out.println("第"+ rowNum +"行 " + "operater: ->");
+		}
+		if(code == 800){
+			System.out.println("第"+ rowNum +"行 " + "operater: =>");
+		}
+		if(code == 804){
+			System.out.println("第"+ rowNum +"行 " + "operater: +=>");
+		}
+		if(code == 812){
+			System.out.println("第"+ rowNum +"行 " + "operater: {");
+		}
+		if(code == 813){
+			System.out.println("第"+ rowNum +"行 " + "operater: ;");
+		}
+		if(code == 814){
+			System.out.println("第"+ rowNum +"行 " + "operater: }");
+		}
+		if(code == 815){
+			System.out.println("第"+ rowNum +"行 " + "operater: :");
+		}
+		if(code == 816){
+			System.out.println("第"+ rowNum +"行 " + "operater: ::");
+		}
+		rule.init();
+		
 	}
 
 }

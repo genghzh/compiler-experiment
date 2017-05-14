@@ -2,14 +2,69 @@ package com.lexical;
 
 public class RuleGraph {
 	
+	private StringBuilder identifier;
+	
+	private StringBuilder decimal;
+	
+	public StringBuilder operator;
+	
 	private int currentState;
 	
 	public RuleGraph(){
 		this.currentState = 0;
+		this.identifier = new StringBuilder();
+		this.operator = new StringBuilder();
+		this.decimal = new StringBuilder();
 	}
 	
 	public RuleGraph(int state){
 		this.currentState = state;
+		this.identifier = new StringBuilder();
+		this.operator = new StringBuilder();
+		this.decimal = new StringBuilder();
+	}
+	
+	/**
+	 * 将记录值归零
+	 */
+	public void init(){
+		this.identifier = new StringBuilder();
+		this.operator = new StringBuilder();
+		this.decimal = new StringBuilder();
+		this.currentState = 0;
+	}
+	
+	/**
+	 * 获得数字
+	 * @return
+	 */
+	public String getDecimal(){
+		return this.decimal.toString();
+	}
+	
+	/**
+	 * 获得identifier
+	 * @return
+	 */
+	public String getIdentifier(){
+		return this.identifier.toString();
+	}
+	
+	/**
+	 * 储存当前token
+	 * @param token
+	 */
+	public void appendIdentifier(char token){
+		
+		this.identifier.append(token);
+	}
+	/**
+	 * 储存当前token
+	 * @param token
+	 */
+	public void appendDecimal(char token){
+		
+		this.decimal.append(token);
 	}
 	
 	/**
@@ -27,11 +82,22 @@ public class RuleGraph {
 	public void setState(int state){
 		this.currentState = state;
 	}
+	
 	/**
 	 * 根据当前状态和token选择下一个状态的编号
 	 * 如果不符合任何条件返回错误码-8888
 	 * 部分符合条件返回当前状态编号乘以负一加负一
 	 * 当前位终止状态时返回编码8888
+	 * 获得identifier时返回801
+	 * 获得decimal时返回807
+	 * 获得=>,800
+	 * 获得+=>,804
+	 * 获得->,809
+	 * 获得{,812
+	 * 获得;,813
+	 * 获得},814
+	 * 获得:,815
+	 * 获得::,816
 	 * @param state
 	 * @param token
 	 * @return
@@ -45,139 +111,226 @@ public class RuleGraph {
 				return 0;
 			}
 			if(this.isCharacter(token)){
+				this.appendIdentifier(token);
+				this.setState(1);
 				return 1;
 			}
 			if(this.isPlus(token)){
+				this.operator.append(token);
+				this.appendDecimal(token);
+				this.setState(4);
 				return 4;
 			}
 			if(this.isMinus(token)){
+				this.appendDecimal(token);
+				this.setState(3);
 				return 3;
 			}
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
+				this.setState(5);
 				return 5;
 			}
 			if(this.isMinus(token)){
+				this.setState(3);
 				return 3;
 			}
 			if(this.isPlus(token)){
+				this.setState(4);
 				return 4;
 			}
 			if(this.isEqual(token)){
+				this.operator.append(token);
+				this.setState(10);
 				return 10;
 			}
 			if(this.isLeftBracket(token)){
+				this.setState(12);
 				return 12;
 			}
 			if(this.isSemicolon(token)){
+				this.setState(13);
 				return 13;
 			}
 			if(this.isRightBracket(token)){
+				this.setState(14);
 				return 14;
 			}
 			if(this.isColon(token)){
+				this.setState(15);
 				return 15;
 			}
 			return -1;
 		}
 		if(state == 1){
 			if(this.isCharacter(token)){
+				this.appendIdentifier(token);
 				return 1;
 			}
 			if(this.isNumber(token)){
+				this.appendIdentifier(token);
 				return 1;
 			}
 			if(this.isUnderline(token)){
+				this.appendIdentifier(token);
+				this.setState(2);
 				return 2;
 			}
+			/**
+			 * 获得标识符identifier
+			 */
 			if(this.notNumAndCharact(token)){
-				return 8;
+				this.setState(8);
+				return 801;
 			}
 			return -2;
 		}
 		if(state == 2){
 			if(this.isCharacter(token)){
+				this.appendIdentifier(token);
+				this.setState(1);
 				return 1;
 			}
 			if(this.isNumber(token)){
+				this.appendIdentifier(token);
+				this.setState(1);
 				return 1;
 			}
 			return -3;
 		}
 		if(state == 3){
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
+				this.setState(5);
 				return 5;
 			}
 			if(this.isGreaterThan(token)){
+				this.setState(9);
 				return 9;
 			}
 			return -4;
 		}
 		if(state == 4){
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
+				this.setState(5);
 				return 5;
 			}
 			if(this.isEqual(token)){
+				this.operator.append(token);
+				this.setState(10);
 				return 10;
 			}
 			return -5;
 		}
 		if(state == 5){
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
 				return 5;
 			}
 			if(this.isPoint(token)){
+				this.appendDecimal(token);
+				this.setState(6);
 				return 6;
 			}
 			return -6;
 		}
 		if(state == 6){
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
+				this.setState(7);
 				return 7;
 			}
 			return -7;
 		}
 		if(state == 7){
 			if(this.isNumber(token)){
+				this.appendDecimal(token);
 				return 7;
 			}
+			/**
+			 * 获得标识符decimal
+			 */
 			if(!this.isNumber(token)){
-				return 8;
+				this.setState(8);
+				return 807;
 			}
 		}
 		if(state == 8){
 			return 8888;
 		}
+		/**
+		 * 获得->
+		 */
 		if(state == 9){
-			return 8;
+			this.setState(8);
+			return 809;
 		}
 		if(state == 10){
 			if(this.isGreaterThan(token)){
+				this.operator.append(token);
+				this.setState(11);
 				return 11;
 			}
 			return -12;
 		}
+		/**
+		 * 获得+=>或者=>
+		 */
 		if(state == 11){
+			if(this.operator.toString().equals("+=>")){
+				this.operator = new StringBuilder();
+				this.setState(8);
+				return 804;
+			}
+			if(this.operator.toString().equals("=>")){
+				this.operator = new StringBuilder();
+				this.setState(8);
+				return 800;
+			}
+			this.setState(8);
 			return 8;
 		}
+		/**
+		 * 获得{
+		 */
 		if(state == 12){
-			return 8;
+			this.setState(8);
+			return 812;
 		}
+		/**
+		 * 获得;
+		 */
 		if(state == 13){
-			return 8;
+			this.setState(8);
+			return 813;
 		}
+		/**
+		 * 获得}
+		 */
 		if(state == 14){
-			return 8;
+			this.setState(8);
+			return 814;
 		}
 		if(state == 15){
 			if(this.isColon(token)){
+				this.setState(16);
 				return 16;
 			}
+			/**
+			 * 获得:
+			 */
 			if(!this.isColon(token)){
-				return 8;
+				this.setState(8);
+				return 815;
 			}
 		}
+		/**
+		 * 获得：：
+		 */
 		if(state == 16){
-			return 8;
+			this.setState(8);
+			return 816;
 		}
 		return -8888;
 	}
@@ -223,7 +376,7 @@ public class RuleGraph {
 	}
 	
 	/**
-	 * 判断是否为大小写字母a|..|zA|..|Z
+	 * 判断是否为大小写字母a|..|z|A|..|Z
 	 * @param token
 	 * @return
 	 */
