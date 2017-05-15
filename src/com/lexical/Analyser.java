@@ -68,8 +68,6 @@ public class Analyser {
 		analysis.Start();
 		
 		fileInputStream.close();
-		
-		System.out.println(outputPath);
 	}
 
 }

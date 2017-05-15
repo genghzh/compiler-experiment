@@ -85,9 +85,8 @@ public class RuleGraph {
 	
 	/**
 	 * 根据当前状态和token选择下一个状态的编号
-	 * 如果不符合任何条件返回错误码-8888
-	 * 部分符合条件返回当前状态编号乘以负一加负一
-	 * 当前位终止状态时返回编码8888
+	 * 如果不符合任何条件返回错误码-8
+	 * 当前位终止状态时返回编码888
 	 * 获得identifier时返回801
 	 * 获得decimal时返回807
 	 * 获得=>,800
@@ -160,6 +159,11 @@ public class RuleGraph {
 				this.setState(15);
 				return 15;
 			}
+			/**
+			 * 从开始状态产生的错误码
+			 * 一般因为遇到了非法token
+			 */
+			this.setState(8);
 			return -1;
 		}
 		if(state == 1){
@@ -183,6 +187,16 @@ public class RuleGraph {
 				this.setState(8);
 				return 801;
 			}
+//			if(token == ' ' || token == '\r' || token == '\n' 
+//					|| token == ';' || token == '\t' || token == ':'
+//					|| token == '-'|| token == '='|| token == '+'){
+//				this.setState(8);
+//				return 801;
+//			}
+			/**
+			 * 非法identifier
+			 */
+			this.setState(8);
 			return -2;
 		}
 		if(state == 2){
@@ -196,7 +210,11 @@ public class RuleGraph {
 				this.setState(1);
 				return 1;
 			}
-			return -3;
+			/**
+			 * 非法identifier
+			 */
+			this.setState(8);
+			return -2;
 		}
 		if(state == 3){
 			if(this.isNumber(token)){
@@ -208,7 +226,11 @@ public class RuleGraph {
 				this.setState(9);
 				return 9;
 			}
-			return -4;
+			/**
+			 * “-”后存在非法字符
+			 */
+			this.setState(8);
+			return -3;
 		}
 		if(state == 4){
 			if(this.isNumber(token)){
@@ -221,7 +243,11 @@ public class RuleGraph {
 				this.setState(10);
 				return 10;
 			}
-			return -5;
+			/**
+			 * “+”后存在非法字符
+			 */
+			this.setState(8);
+			return -4;
 		}
 		if(state == 5){
 			if(this.isNumber(token)){
@@ -233,7 +259,11 @@ public class RuleGraph {
 				this.setState(6);
 				return 6;
 			}
-			return -6;
+			/**
+			 * 非法decimal
+			 */
+			this.setState(8);
+			return -5;
 		}
 		if(state == 6){
 			if(this.isNumber(token)){
@@ -241,7 +271,11 @@ public class RuleGraph {
 				this.setState(7);
 				return 7;
 			}
-			return -7;
+			/**
+			 * 非法decimal
+			 */
+			this.setState(8);
+			return -5;
 		}
 		if(state == 7){
 			if(this.isNumber(token)){
@@ -255,9 +289,14 @@ public class RuleGraph {
 				this.setState(8);
 				return 807;
 			}
+			/**
+			 * 非法decimal
+			 */
+			this.setState(8);
+			return -5;
 		}
 		if(state == 8){
-			return 8888;
+			return 888;
 		}
 		/**
 		 * 获得->
@@ -272,24 +311,29 @@ public class RuleGraph {
 				this.setState(11);
 				return 11;
 			}
-			return -12;
+			/**
+			 * 非法operator
+			 */
+			this.setState(8);
+			return -10;
 		}
 		/**
 		 * 获得+=>或者=>
 		 */
 		if(state == 11){
 			if(this.operator.toString().equals("+=>")){
-				this.operator = new StringBuilder();
 				this.setState(8);
 				return 804;
 			}
 			if(this.operator.toString().equals("=>")){
-				this.operator = new StringBuilder();
 				this.setState(8);
 				return 800;
 			}
+			/**
+			 * 非法operator
+			 */
 			this.setState(8);
-			return 8;
+			return -10;
 		}
 		/**
 		 * 获得{
@@ -332,7 +376,8 @@ public class RuleGraph {
 			this.setState(8);
 			return 816;
 		}
-		return -8888;
+		this.setState(8);
+		return -8;
 	}
 	
 	/**
@@ -368,7 +413,7 @@ public class RuleGraph {
 	 * @return
 	 */	
 	public boolean isEnter(char token){
-		if(token == '\n'){
+		if(token == '\n' || token == '\r'){
 			return true;
 		} else {
 			return false;

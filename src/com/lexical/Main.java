@@ -14,9 +14,9 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String filepath = "E:\\eclipse-workspace\\compilerexperiment\\test2.txt";
+		String filepath = "E:\\test3.txt";
 		
-		String outputFileName = "lexical_result.txt";
+		String outputFileName = "tokenOut.txt";
 		
 		try {
 			Analyser analyser = new Analyser(filepath,outputFileName);
