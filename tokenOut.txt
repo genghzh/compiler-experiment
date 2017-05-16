@@ -1,243 +1,63 @@
-第1行 第5列 key word: thread
-第1行 第13列 identifier: Thread1
-第1行 第16列 非法字符串：#
-第2行 第7列 key word: features
-第3行 第18列 非法字符串：_APPosition_Input
-第3行 第19列 operator: :
-第3行 第21列 key word: in
-第3行 第26列 key word: event
-第3行 第30列 key word: data
-第3行 第34列 key word: port
-第3行 第44列 identifier: Nav_Types
-第3行 第47列 operator: ::
-第3行 第60列 identifier: Position_GPS
-第3行 第61列 operator: ;
-第4行 第4列 key word: flows
-第5行 第7列 非法decimal：1flow1
-第5行 第8列 operator: :
-第5行 第12列 key word: flow
-第5行 第16列 key word: path
-第5行 第22列 identifier: signal
-第5行 第24列 operator: ->
-第5行 第32列 identifier: result1
-第5行 第33列 operator: ;
-第6行 第9列 key word: properties
-第7行 第16列 identifier: dispatch_protocol
-第7行 第18列 operator: =>
-第7行 第24列 key word: access
-第7行 第29列 decimal: 50.0
-第7行 第30列 operator: ;
-第8行 第2列 key word: end
-第8行 第10列 identifier: Thread1
-第8行 第11列 operator: ;
-第10行 第5列 key word: thread
-第10行 第12列 identifier: Thread2
-第11行 第7列 key word: features
-第12行 第16列 identifier: AP_Position_Input
-第12行 第17列 operator: :
-第12行 第19列 key word: in
-第12行 第24列 key word: event
-第12行 第28列 key word: data
-第12行 第32列 key word: port
-第12行 第42列 identifier: Nav_Types
-第12行 第45列 operator: ::
-第12行 第58列 identifier: Position_GPS
-第12行 第59列 operator: ;
-第13行 第4列 key word: flows
-第14行 第5列 identifier: flow1
-第14行 第6列 operator: :
-第14行 第10列 key word: flow
-第14行 第14列 key word: path
-第14行 第20列 identifier: signal
-第14行 第22列 operator: ->
-第14行 第30列 identifier: result1
-第14行 第31列 operator: ;
-第15行 第9列 key word: properties
-第16行 第16列 identifier: dispatch_protocol
-第16行 第18列 operator: =>
-第16行 第24列 key word: access
-第16行 第29列 decimal: 50.0
-第16行 第30列 operator: ;
-第17行 第7列 identifier: Thread2
-第17行 第8列 operator: ;
-第19行 第5列 key word: thread
-第19行 第12列 identifier: Thread3
-第20行 第7列 key word: features
-第21行 第16列 identifier: AP_Position_Input
-第21行 第17列 operator: :
-第21行 第19列 key word: in
-第21行 第24列 key word: event
-第21行 第28列 key word: data
-第21行 第32列 key word: port
-第21行 第42列 identifier: Nav_Types
-第21行 第44列 operator: :
-第21行 第57列 identifier: Position_GPS
-第21行 第58列 operator: ;
-第22行 第4列 key word: flows
-第23行 第5列 identifier: flow1
-第23行 第6列 operator: :
-第23行 第10列 key word: flow
-第23行 第14列 key word: path
-第23行 第20列 identifier: signal
-第23行 第24列 “+”后存在非法字符: +>
-第23行 第32列 identifier: result1
-第23行 第33列 operator: ;
-第24行 第9列 key word: properties
-第25行 第16列 identifier: dispatch_protocol
-第25行 第18列 operator: =>
-第25行 第24列 key word: access
-第25行 第29列 decimal: 50.0
-第25行 第30列 operator: ;
-第26行 第2列 key word: end
-第26行 第10列 identifier: Thread3
-第26行 第11列 operator: ;
-第28行 第5列 key word: thread
-第28行 第12列 identifier: Thread4
-第29行 第7列 key word: features
-第30行 第1列 key word: in
-第30行 第6列 key word: event
-第30行 第10列 key word: data
-第30行 第14列 key word: port
-第30行 第24列 identifier: Nav_Types
-第30行 第27列 operator: ::
-第30行 第40列 identifier: Position_GPS
-第30行 第41列 operator: ;
-第31行 第4列 key word: flows
-第32行 第5列 identifier: flow1
-第32行 第6列 operator: :
-第32行 第10列 key word: flow
-第32行 第14列 key word: path
-第32行 第20列 identifier: signal
-第32行 第22列 operator: ->
-第32行 第30列 identifier: result1
-第32行 第31列 operator: ;
-第33行 第9列 key word: properties
-第34行 第16列 identifier: dispatch_protocol
-第34行 第18列 operator: =>
-第34行 第24列 key word: access
-第34行 第29列 非法字符串：.01
-第34行 第30列 operator: ;
-第35行 第2列 key word: end
-第35行 第10列 identifier: Thread4
-第35行 第11列 operator: ;
-第37行 第5列 key word: thread
-第37行 第12列 identifier: Thread5
-第38行 第7列 key word: features
-第39行 第16列 identifier: AP_Position_Input
-第39行 第17列 operator: :
-第39行 第19列 key word: in
-第39行 第24列 key word: event
-第39行 第28列 key word: data
-第39行 第32列 key word: port
-第39行 第42列 identifier: Nav_Types
-第39行 第45列 operator: ::
-第39行 第58列 identifier: Position_GPS
-第39行 第59列 operator: ;
-第40行 第4列 key word: flows
-第41行 第5列 identifier: flow1
-第41行 第6列 operator: :
-第41行 第10列 key word: flow
-第41行 第14列 key word: path
-第41行 第20列 identifier: signal
-第41行 第22列 operator: ->
-第41行 第29列 identifier: result1
-第42行 第9列 key word: properties
-第43行 第16列 identifier: dispatch_protocol
-第43行 第18列 operator: =>
-第43行 第24列 key word: access
-第43行 第29列 decimal: 50.0
-第43行 第30列 operator: ;
-第44行 第2列 key word: end
-第44行 第10列 identifier: Thread5
-第44行 第11列 operator: ;
-第46行 第5列 key word: thread
-第46行 第12列 identifier: Thread6
-第47行 第7列 key word: features
-第48行 第16列 identifier: AP_Position_Input
-第48行 第17列 operator: :
-第48行 第19列 key word: in
-第48行 第24列 key word: event
-第48行 第28列 key word: data
-第48行 第32列 key word: port
-第48行 第42列 identifier: Nav_Types
-第48行 第45列 operator: ::
-第48行 第58列 identifier: Position_GPS
-第48行 第59列 operator: ;
-第49行 第5列 identifier: flow1
-第49行 第6列 operator: :
-第49行 第10列 key word: flow
-第49行 第14列 key word: path
-第49行 第20列 identifier: signal
-第49行 第22列 operator: ->
-第49行 第30列 identifier: result1
-第49行 第31列 operator: ;
-第50行 第11列 identifier: properties11
-第51行 第16列 identifier: dispatch_protocol
-第51行 第18列 operator: =>
-第51行 第24列 key word: access
-第51行 第29列 decimal: 50.0
-第51行 第30列 operator: ;
-第52行 第2列 key word: end
-第52行 第10列 identifier: Thread6
-第52行 第11列 operator: ;
-第54行 第5列 key word: thread
-第54行 第12列 identifier: Thread7
-第55行 第7列 key word: features
-第56行 第4列 key word: event
-第56行 第5列 operator: :
-第56行 第7列 key word: in
-第56行 第12列 key word: event
-第56行 第16列 key word: data
-第56行 第20列 key word: port
-第56行 第30列 identifier: Nav_Types
-第56行 第33列 operator: ::
-第56行 第46列 identifier: Position_GPS
-第56行 第47列 operator: ;
-第57行 第4列 key word: flows
-第58行 第5列 identifier: flow1
-第58行 第6列 operator: :
-第58行 第10列 key word: flow
-第58行 第14列 key word: path
-第58行 第20列 identifier: signal
-第58行 第22列 operator: ->
-第58行 第30列 identifier: result1
-第58行 第31列 operator: ;
-第59行 第9列 key word: properties
-第60行 第16列 identifier: dispatch_protocol
-第60行 第18列 operator: =>
-第60行 第24列 key word: access
-第60行 第29列 decimal: 50.0
-第60行 第30列 operator: ;
-第61行 第2列 key word: end
-第61行 第10列 identifier: Thread7
-第61行 第11列 operator: ;
-第63行 第5列 key word: thread
-第63行 第11列 key word: thread
-第64行 第7列 key word: features
-第65行 第16列 identifier: AP_Position_Input
-第65行 第17列 operator: :
-第65行 第19列 key word: in
-第65行 第24列 key word: event
-第65行 第28列 key word: data
-第65行 第32列 key word: port
-第65行 第42列 identifier: Nav_Types
-第65行 第45列 operator: ::
-第65行 第58列 identifier: Position_GPS
-第65行 第59列 operator: ;
-第66行 第4列 key word: flows
-第67行 第5列 identifier: flow1
-第67行 第6列 operator: :
-第67行 第10列 key word: flow
-第67行 第14列 key word: path
-第67行 第20列 identifier: signal
-第67行 第22列 operator: ->
-第67行 第30列 identifier: result1
-第67行 第31列 operator: ;
-第68行 第9列 key word: properties
-第69行 第16列 identifier: dispatch_protocol
-第69行 第18列 operator: =>
-第69行 第24列 key word: access
-第69行 第29列 decimal: 50.0
-第69行 第30列 operator: ;
-第70行 第2列 key word: end
-第70行 第9列 key word: thread
+第1行 第6列 key word: thread
+第1行 第14列 identifier: Thread1
+第1行 第15列 非法字符串：#
+第2行 第8列 key word: features
+第3行 第17列 非法字符串：_APPosition_Input
+第3行 第18列 operator: :
+第3行 第20列 key word: in
+第3行 第25列 key word: event
+第3行 第29列 key word: data
+第3行 第33列 key word: port
+第3行 第43列 identifier: Nav_Types
+第3行 第46列 operator: ::
+第3行 第59列 identifier: Position_GPS
+第3行 第60列 operator: ;
+第4行 第5列 key word: flows
+第5行 第6列 非法decimal：1flow1
+第5行 第7列 operator: :
+第5行 第11列 key word: flow
+第5行 第15列 key word: path
+第5行 第21列 identifier: signal
+第5行 第23列 operator: ->
+第5行 第31列 identifier: result1
+第5行 第32列 operator: ;
+第6行 第10列 key word: properties
+第7行 第17列 identifier: dispatch_protocol
+第7行 第19列 operator: =>
+第7行 第25列 key word: access
+第7行 第30列 decimal: 50.0
+第7行 第31列 operator: ;
+第8行 第3列 key word: end
+第8行 第11列 identifier: Thread1
+第8行 第12列 operator: ;
+第10行 第6列 key word: thread
+第10行 第13列 identifier: Thread2
+第11行 第8列 key word: features
+第12行 第17列 非法字符串：_APPosition_Input
+第12行 第18列 operator: :
+第12行 第20列 key word: in
+第12行 第25列 key word: event
+第12行 第29列 key word: data
+第12行 第33列 key word: port
+第12行 第43列 identifier: Nav_Types
+第12行 第46列 operator: ::
+第12行 第59列 identifier: Position_GPS
+第12行 第60列 operator: ;
+第13行 第5列 key word: flows
+第14行 第6列 identifier: flow1
+第14行 第7列 operator: :
+第14行 第11列 key word: flow
+第14行 第15列 key word: path
+第14行 第21列 identifier: signal
+第14行 第23列 operator: ->
+第14行 第31列 identifier: result1
+第14行 第32列 operator: ;
+第15行 第10列 key word: properties
+第16行 第17列 identifier: dispatch_protocol
+第16行 第19列 operator: =>
+第16行 第25列 key word: access
+第16行 第28列 非法字符串：.01
+第16行 第29列 operator: ;
+第17行 第3列 key word: end
+第17行 第11列 identifier: Thread2
+第17行 第12列 operator: ;

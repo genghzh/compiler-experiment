@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		String filepath = "E:\\test3.txt";
+		String filepath = "E:\\test2.txt";
 		
 		String outputFileName = "tokenOut.txt";
 		

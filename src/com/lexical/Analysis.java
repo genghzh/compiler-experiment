@@ -17,7 +17,7 @@ public class Analysis {
 	/**
 	 * 记录当前进行到了第几列
 	 */
-	public int colNum = -1;
+	public int colNum = 0;
 	/**
 	 * 规则实体成员
 	 */
@@ -86,9 +86,9 @@ public class Analysis {
 	public boolean AnalysisStep(char token) throws IOException{
 		if(token == '\n'){
 			rowNum++;
-			colNum = -1;
+			colNum = 0;
 		}
-		if(!rule.isSpaceOrTable(token) && token != '\r' && token != '\n'){
+		if(!rule.isSpaceOrTable(token) && token != '\r' && token != '\n' ){
 			colNum++;
 		}
 		/**
@@ -220,11 +220,7 @@ public class Analysis {
 			}
 			intToken = fileInputStream.read();
 		}
-		if((char)intToken == ' ' || (char)intToken != ':' || (char)intToken != ';'
-				|| (char)intToken != '+' || (char)intToken != '-'
-				|| (char)intToken != '='){
-			colNum++;
-		}
+		colNum--;
 	}
 
 }
