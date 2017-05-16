@@ -115,88 +115,107 @@ public class Analysis {
 		byte[] content;
 		StringBuilder strC = new StringBuilder();boolean flagC = false;
 		StringBuilder strW = new StringBuilder();boolean flagW= false;
+		String resultC = null;
+		String resultW = null;
 		if(code == 801){
 			flagC = true;
 			if(rule.isKeyWord(rule.getIdentifier())){
-				strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "key word: " + rule.getIdentifier());
+				resultC = rule.getIdentifier();
+				strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "key word: " + resultC);
 			} else {
+				resultC = "identifier";
 				strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "identifier: " + rule.getIdentifier());
 			}
 		}
 		if(code == 807){
 			flagC = true;
+			resultC = "decimal";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "decimal: " + rule.getDecimal());
 		}
 		if(code == 809){
 			flagC = true;
+			resultC = "->";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: ->");
 		}
 		if(code == 800){
 			flagC = true;
+			resultC = "=>";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: =>");
 		}
 		if(code == 804){
 			flagC = true;
+			resultC = "+=>";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: +=>");
 		}
 		if(code == 812){
 			flagC = true;
+			resultC = "{";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: {");
 		}
 		if(code == 813){
 			flagC = true;
+			resultC = ";";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: ;");
 		}
 		if(code == 814){
 			flagC = true;
+			resultC = "}";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: }");
 		}
 		if(code == 815){
 			flagC = true;
+			resultC = ":";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: :");
 		}
 		if(code == 816){
 			flagC = true;
+			resultC = "::";
 			strC.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "operator: ::");
 		}
 		if(flagC){
 			System.out.print(strC.append("\r\n").toString());
-			content = strC.toString().getBytes();
+			content = (resultC+"\r\n").getBytes();
 			this.fileOutputStream.write(content);
 		}
 		if(code == -1){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "非法字符串：" + illegalString.toString());
 		}
 		if(code == -2){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "非法identifier：" + rule.getIdentifier() + illegalString.toString());
 		}
 		if(code == -3){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "“-”后存在非法字符： " + "-" + illegalString.toString());
 		}
 		if(code == -4){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "“+”后存在非法字符: " + "+" + illegalString.toString());
 		}
 		if(code == -5){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "非法decimal：" + rule.getDecimal() + illegalString.toString());
 		}
 		if(code == -10){
 			flagW = true;
 			this.skipIllegalToken();
+			resultW = "ERROR";
 			strW.append("第"+ rowNum +"行 " +"第"+ colNum +"列 " + "非法operator：" + illegalString.toString());
 		}
 		if(flagW){
 			System.err.print(strW.append("\r\n").toString());
-			content = strW.toString().getBytes();
+			content = (resultW+"\r\n").getBytes();
 			this.fileOutputStream.write(content);
 		}
 		if(this.fileOutputStream != null)
