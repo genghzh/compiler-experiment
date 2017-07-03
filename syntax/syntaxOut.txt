@@ -1,0 +1,156 @@
+<thread id = Thread1 >
+	<feature>
+		<port_spec>
+			<identifier> AP_Position_Input </identifier>
+			<IOtypr> in <IOtype>
+			<port_type type = event data port >
+				<reference>
+					<identifier> Nav_Types </identifier>
+					<identifier> Position_GPS </identifier>
+				</reference>
+			</port_type>
+		</port_spec>
+	</feature>
+	<flow_path_spec>
+		<identifier> flow1 </identifier>
+		<identifier> signal </identifier>
+		<identifier> result1 </identifier>
+	</flow_path_spec>
+	<association>
+		<identifier> dispatch_protocol </identifier>
+		<splitter> => </splitter>
+		<decimal> 50.0 </decimal>
+	</association>
+</thread id = Thread1 >
+<thread id = Thread_2 >
+	<feature>
+		<port_spec>
+			<identifier> AP_Position_Input </identifier>
+			<IOtypr> in <IOtype>
+			<port_type type = data port >
+				<reference>
+					<identifier> Nav_Types1 </identifier>
+					<identifier> Nav_Types2 </identifier>
+					<identifier> Position_GPS </identifier>
+				</reference>
+			</port_type>
+		</port_spec>
+	</feature>
+	<flow_source_spec>
+		<identifier> flow1 </identifier>
+		<identifier> signal </identifier>
+		<association>
+			<identifier> result1 </identifier>
+			<identifier> result2 </identifier>
+			</constant>
+			<splitter> +=> </splitter>
+			<decimal> 50.0 </decimal>
+		</association>
+	</flow_source_spec>
+	<association>
+		none
+	</association>
+</thread id = Thread_2 >
+<thread id = Thread3d >
+	<feature>
+		<port_spec>
+			<identifier> AP_Position_Input </identifier>
+			<IOtypr> out <IOtype>
+			<port_type type = data port >
+				<reference>
+					<identifier> Nav_Types1 </identifier>
+					<identifier> Nav_Types2 </identifier>
+					<identifier> Position_GPS </identifier>
+					<identifier> result1 </identifier>
+					<identifier> result2 </identifier>
+				</reference>
+			</port_type>
+		</port_spec>
+	</feature>
+	<flow_sink_spec>
+		<identifier> flow1 </identifier>
+		<identifier> signal </identifier>
+		<association>
+			<identifier> result1 </identifier>
+			<identifier> result2 </identifier>
+			</constant>
+			<splitter> +=> </splitter>
+			<decimal> 50.0 </decimal>
+		</association>
+	</flow_sink_spec>
+	<association>
+		<identifier> size </identifier>
+		</constant>
+		<splitter> => </splitter>
+		<decimal> +50.0 </decimal>
+	</association>
+</thread id = Thread3d >
+<thread id = Thread4 >
+	<feature>
+		<parameter>
+			<IOtypr> in out <IOtype>
+			<reference>
+				<identifier> Nav_Types1 </identifier>
+				<identifier> Nav_Types2 </identifier>
+				<identifier> Position_GPS </identifier>
+				<identifier> result1 </identifier>
+				<identifier> result2 </identifier>
+			</reference>
+		</paramter>
+	</feature>
+	<flow_sink_spec>
+		<identifier> flow1 </identifier>
+		<identifier> signal </identifier>
+		<association>
+			<identifier> result1 </identifier>
+			<identifier> result2 </identifier>
+			</constant>
+			<splitter> +=> </splitter>
+			<decimal> 50.0 </decimal>
+		</association>
+	</flow_sink_spec>
+	<association>
+		<identifier> size </identifier>
+		</constant>
+		<splitter> => </splitter>
+		<decimal> -50.0 </decimal>
+	</association>
+</thread id = Thread4 >
+<thread id = Thread5 >
+	<feature>
+		<port_spec>
+			<identifier> AP_Position_Input </identifier>
+			<IOtypr> in out <IOtype>
+			<port_type type = event port >
+			</port_type>
+		</port_spec>
+	</feature>
+	<flow_sink_spec>
+		<identifier> flow1 </identifier>
+		<identifier> signal </identifier>
+		<association>
+			<identifier> result1 </identifier>
+			<identifier> result2 </identifier>
+			</constant>
+			<splitter> +=> </splitter>
+			<decimal> 50.0 </decimal>
+		</association>
+	</flow_sink_spec>
+	<association>
+		<identifier> size </identifier>
+		</constant>
+		<splitter> => </splitter>
+		<decimal> 50.0 </decimal>
+	</association>
+</thread id = Thread5 >
+<thread id = Thread6 >
+	<feature>
+		none
+	</feature>
+	<flow_spec>
+		none
+	</flow_spec>
+	<association>
+		none
+	</association>
+</thread id = Thread6 >
